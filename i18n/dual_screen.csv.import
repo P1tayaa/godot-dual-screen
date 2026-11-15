@@ -1,0 +1,19 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://b8phdca4etabj"
+
+[deps]
+
+files=["res://addons/dual_screen/i18n/dual_screen.en.translation", "res://addons/dual_screen/i18n/dual_screen.fr.translation"]
+
+source_file="res://addons/dual_screen/i18n/dual_screen.csv"
+dest_files=["res://addons/dual_screen/i18n/dual_screen.en.translation", "res://addons/dual_screen/i18n/dual_screen.fr.translation"]
+
+[params]
+
+compress=1
+delimiter=0
+unescape_keys=false
+unescape_translations=true
