@@ -71,7 +71,7 @@ func attach(scene: DualScene) -> void:
 	current = scene
 	scene.tree_exiting.connect(_on_scene_exiting.bind(scene))
 	scene.set_external(mode != Mode.SINGLE)
-	if mode != Mode.SINGLE and scene.pixel_scale != _pixel_scale:
+	if scene.pixel_scale != _pixel_scale:
 		_pixel_scale = scene.pixel_scale
 		_size_surfaces()
 	_apply_layout()
@@ -171,7 +171,7 @@ func _size_surfaces() -> void:
 	var bottom: Vector2i = screen_size(DualScene.Screen.BOTTOM)
 	var window: Window = get_window()
 	if mode == Mode.SINGLE:
-		window.content_scale_size = Vector2i(maxi(top.x, bottom.x), top.y + bottom.y)
+		window.content_scale_size = Vector2i(maxi(top.x, bottom.x), top.y + bottom.y) * _pixel_scale
 		return
 	var main_size: Vector2i = screen_size(_main_display_role())
 	var second_size: Vector2i = screen_size(_other(_main_display_role()))

@@ -20,7 +20,7 @@ enum Redraw { ALWAYS, ON_CHANGE }
 @export var bottom_redraw: Redraw = Redraw.ALWAYS
 ## Renders both screens at this multiple of the base size (2 = 640x480 on the RG DS, the panel's own pixels) while
 ## the scene keeps working in base-size coordinates (size_2d_override). For sharp text and hanzi, or full-res 3D.
-## Costs pixel_scale² the fill. Ignored in the stacked layout.
+## Costs pixel_scale² the fill. Applies to every layout (stacked on a phone too).
 @export_range(1, 4) var pixel_scale: int = 1
 
 var _physical_cameras: Array[Camera2D] = []
@@ -98,10 +98,11 @@ func set_stacked_order(swapped: bool) -> void:
 func set_external(external: bool) -> void:
 	top_container.visible = not external
 	bottom_container.visible = not external
-	# Outside the stacked layout each screen has its own surface, so it can render at pixel_scale.
-	var scale: int = pixel_scale if external else 1
 	for screen: Screen in [Screen.TOP, Screen.BOTTOM]:
-		viewport(screen).size = Screens.screen_size(screen) * scale
+		var size_px: Vector2i = Screens.screen_size(screen) * pixel_scale
+		viewport(screen).size = size_px
+		var container: SubViewportContainer = top_container if screen == Screen.TOP else bottom_container
+		container.custom_minimum_size = Vector2(size_px)
 	# The scene root covers the window: let touch through to the presenter drawn under it.
 	mouse_filter = Control.MOUSE_FILTER_IGNORE if external else Control.MOUSE_FILTER_PASS
 	# A container sets its viewport to UPDATE_DISABLED when hidden (ALWAYS when shown): put our modes back.
