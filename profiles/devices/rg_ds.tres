@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="DeviceProfile" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://addons/dual_screen/profiles/device_profile.gd" id="1_profile"]
+[ext_resource type="Script" path="res://addons/dual_screen/profiles/screen_spec.gd" id="2_spec"]
+
+[sub_resource type="Resource" id="top"]
+script = ExtResource("2_spec")
+resolution = Vector2i(640, 480)
+size_mm = Vector2(81.28, 60.96)
+base_size = Vector2i(320, 240)
+
+[sub_resource type="Resource" id="bottom"]
+script = ExtResource("2_spec")
+resolution = Vector2i(640, 480)
+size_mm = Vector2(81.28, 60.96)
+base_size = Vector2i(320, 240)
+
+[resource]
+script = ExtResource("1_profile")
+id = &"rg_ds"
+display_name = "Anbernic RG DS"
+model_names = PackedStringArray("RG DS", "RGDS")
+top = SubResource("top")
+bottom = SubResource("bottom")
+gap_mm = 22.0
+offset_mm = 0.0
+main_display_is_top = false

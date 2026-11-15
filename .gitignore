@@ -1,0 +1,5 @@
+# Gradle
+android/plugin_src/.gradle/
+android/plugin_src/.kotlin/
+android/plugin_src/**/build/
+android/plugin_src/local.properties

@@ -1,0 +1,8 @@
+keys,en,fr
+FPS_LABEL,%d fps,%d fps
+COMMON_SAVE,Save,Enregistrer
+SETTINGS_HELP,"Open the device flat. Change the gap until the blue lines run straight across the hinge.","Ouvre la console à plat. Règle l'écart jusqu'à ce que les lignes bleues traversent la charnière tout droit."
+SETTINGS_DEVICE,Device: %s,Console : %s
+SETTINGS_GAP,Gap: %.1f mm,Écart : %.1f mm
+SETTINGS_OFFSET,Offset: %.1f mm,Décalage : %.1f mm
+SETTINGS_SAVED,Saved.,Enregistré.

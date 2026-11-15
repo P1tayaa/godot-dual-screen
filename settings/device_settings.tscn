@@ -1,0 +1,118 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://addons/dual_screen/dual_scene/dual_scene.tscn" id="1_base"]
+[ext_resource type="Script" path="res://addons/dual_screen/settings/device_settings.gd" id="2_script"]
+
+[node name="DeviceSettings" instance=ExtResource("1_base")]
+script = ExtResource("2_script")
+top_redraw = 1
+bottom_redraw = 1
+
+[node name="World" type="Node2D" parent="TopContainer/TopViewport" index="0"]
+unique_name_in_owner = true
+
+[node name="TopUi" type="CanvasLayer" parent="TopContainer/TopViewport" index="1"]
+
+[node name="Help" type="Label" parent="TopContainer/TopViewport/TopUi" index="0"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 6.0
+offset_top = 4.0
+offset_right = -6.0
+offset_bottom = 40.0
+text = "SETTINGS_HELP"
+autowrap_mode = 3
+
+[node name="BottomUi" type="CanvasLayer" parent="BottomContainer/BottomViewport" index="0"]
+
+[node name="Panel" type="PanelContainer" parent="BottomContainer/BottomViewport/BottomUi" index="0"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -120.0
+offset_right = 150.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Column" type="VBoxContainer" parent="BottomContainer/BottomViewport/BottomUi/Panel" index="0"]
+layout_mode = 2
+
+[node name="DeviceRow" type="HBoxContainer" parent="BottomContainer/BottomViewport/BottomUi/Panel/Column" index="0"]
+layout_mode = 2
+
+[node name="PrevDevice" type="Button" parent="BottomContainer/BottomViewport/BottomUi/Panel/Column/DeviceRow" index="0"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "<"
+
+[node name="Device" type="Label" parent="BottomContainer/BottomViewport/BottomUi/Panel/Column/DeviceRow" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_alignment = 1
+
+[node name="NextDevice" type="Button" parent="BottomContainer/BottomViewport/BottomUi/Panel/Column/DeviceRow" index="2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = ">"
+
+[node name="GapRow" type="HBoxContainer" parent="BottomContainer/BottomViewport/BottomUi/Panel/Column" index="1"]
+layout_mode = 2
+
+[node name="GapLess" type="Button" parent="BottomContainer/BottomViewport/BottomUi/Panel/Column/GapRow" index="0"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "-"
+
+[node name="Gap" type="Label" parent="BottomContainer/BottomViewport/BottomUi/Panel/Column/GapRow" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_alignment = 1
+
+[node name="GapMore" type="Button" parent="BottomContainer/BottomViewport/BottomUi/Panel/Column/GapRow" index="2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "+"
+
+[node name="OffsetRow" type="HBoxContainer" parent="BottomContainer/BottomViewport/BottomUi/Panel/Column" index="2"]
+layout_mode = 2
+
+[node name="OffsetLess" type="Button" parent="BottomContainer/BottomViewport/BottomUi/Panel/Column/OffsetRow" index="0"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "-"
+
+[node name="Offset" type="Label" parent="BottomContainer/BottomViewport/BottomUi/Panel/Column/OffsetRow" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_alignment = 1
+
+[node name="OffsetMore" type="Button" parent="BottomContainer/BottomViewport/BottomUi/Panel/Column/OffsetRow" index="2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "+"
+
+[node name="SaveRow" type="HBoxContainer" parent="BottomContainer/BottomViewport/BottomUi/Panel/Column" index="3"]
+layout_mode = 2
+
+[node name="Status" type="Label" parent="BottomContainer/BottomViewport/BottomUi/Panel/Column/SaveRow" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Save" type="Button" parent="BottomContainer/BottomViewport/BottomUi/Panel/Column/SaveRow" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "COMMON_SAVE"

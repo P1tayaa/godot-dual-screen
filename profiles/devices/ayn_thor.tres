@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="DeviceProfile" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://addons/dual_screen/profiles/device_profile.gd" id="1_profile"]
+[ext_resource type="Script" path="res://addons/dual_screen/profiles/screen_spec.gd" id="2_spec"]
+
+[sub_resource type="Resource" id="top"]
+script = ExtResource("2_spec")
+resolution = Vector2i(1920, 1080)
+size_mm = Vector2(132.83, 74.72)
+base_size = Vector2i(640, 360)
+
+[sub_resource type="Resource" id="bottom"]
+script = ExtResource("2_spec")
+resolution = Vector2i(1240, 1080)
+size_mm = Vector2(75.08, 65.39)
+base_size = Vector2i(412, 360)
+
+[resource]
+script = ExtResource("1_profile")
+id = &"ayn_thor"
+display_name = "AYN Thor"
+model_names = PackedStringArray("Thor", "AYN Thor")
+top = SubResource("top")
+bottom = SubResource("bottom")
+gap_mm = 25.0
+offset_mm = 0.0
+main_display_is_top = true
