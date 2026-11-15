@@ -82,9 +82,10 @@ func _refresh() -> void:
 func _send_gl_texture() -> void:
 	# Not get_texture().get_rid(): that is a proxy whose GL id is copied before the render target exists (0).
 	var rid: RID = RenderingServer.viewport_get_texture(_scene.viewport(_screen).get_viewport_rid())
-	_gl_handle = RenderingServer.texture_get_native_handle(rid)
-	if _gl_handle == 0:
+	var handle: int = RenderingServer.texture_get_native_handle(rid)
+	if handle == 0 or handle == _gl_handle:
 		return
+	_gl_handle = handle
 	# Godot's render targets are stored bottom-up in GL.
 	_plugin.call("setTexture", _gl_handle, true)
 	_plugin.call("setContinuous", _scene.redraw_mode(_screen) == DualScene.Redraw.ALWAYS)
@@ -104,8 +105,9 @@ func _on_frame_post_draw() -> void:
 	if _scene == null or not is_instance_valid(_scene):
 		return
 	if transport == Transport.GL:
-		if _gl_handle == 0:
-			_send_gl_texture()
+		# Checked every frame: Godot can re-create a render target (seen when a 3D screen starts as ON_CHANGE and
+		# later draws), and the plugin would keep showing the old, frozen texture.
+		_send_gl_texture()
 		return
 	if _scene.redraw_mode(_screen) == DualScene.Redraw.ON_CHANGE and not _dirty:
 		return
