@@ -1,7 +1,7 @@
 # Philosophy
 
 This core is the starting point for small dual-screen tools and games (RG DS class handhelds: two 640x480 touch
-screens, a weak ARM chip). Every project forks it. Nothing here needs to be clever. Someone new should be able to open it,
+screens, a weak ARM chip). Every project uses it as an addon. Nothing here needs to be clever. Someone new should be able to open it,
 read for an hour, and start working in it.
 
 ## Performance is a design rule
@@ -41,7 +41,7 @@ A tool, a minigame, a puzzle: anything the core does not cover is its own scene 
 
 Such a scene:
 
-- lives in its own folder (`examples/<name>/` in the core, `scenes/<name>/` in a fork) with its `.tscn` and script;
+- lives in its own folder (`examples/<name>/` in the core, `scenes/<name>/` in a game) with its `.tscn` and script;
 - inherits `core/dual_scene/dual_scene.tscn`, so it has a top and a bottom screen;
 - is built in the editor (nodes, containers, exports), so you can open it and see what it is;
 - takes its inputs through `@export`, reports back through signals;
